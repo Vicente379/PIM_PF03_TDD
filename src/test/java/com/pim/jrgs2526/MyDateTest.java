@@ -21,6 +21,7 @@ public class MyDateTest {
         // First check: a valid date from a leap year
         try {
             myDate = new MyDate(day, month, year);
+            Assertions.fail();
         }
         catch (Exception ex) {
             Assertions.fail();
