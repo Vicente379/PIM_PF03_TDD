@@ -1,6 +1,7 @@
 package com.pim.jrgs2526;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.YearMonth;
 
 public class MyDate {
@@ -45,14 +46,10 @@ public class MyDate {
 
     public void setYear(int year) {
 
-        if (year <= 0 || year > LocalDate.now().getYear() || !isLeapYear(year)) {
+        if (year <= 0 || year > LocalDate.now().getYear() || !Year.isLeap(year)) {
             throw new IllegalArgumentException(ERR_INVALID_YEAR);
         }
         this.year = year;
-    }
-
-    private boolean isLeapYear(int year) {
-        return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
     }
 
     public void setDay(int day) {
@@ -62,7 +59,6 @@ public class MyDate {
         }
         this.day = day;
     }
-
 
     public enum Months {
         JANUARY(1),
