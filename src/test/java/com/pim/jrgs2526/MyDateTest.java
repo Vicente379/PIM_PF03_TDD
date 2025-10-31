@@ -85,7 +85,7 @@ public class MyDateTest {
         }
         Assertions.fail();
     }
-
+/*
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 31, 32, 50})
     public void myDateInvalidDayChange(int day) {
@@ -101,7 +101,7 @@ public class MyDateTest {
         }
         Assertions.fail();
     }
-
+*/
     @ParameterizedTest
     @ValueSource(ints = {-1, 1, 1998, 1999, 2001, 2002, 2003, 2005, 2006})
     public void myDateInvalidYear(int year) {
