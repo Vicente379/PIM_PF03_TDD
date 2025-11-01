@@ -1,19 +1,25 @@
 package com.pim.jrgs2526;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.YearMonth;
 
 public class MyDate {
+
+    public static final String ERR_INVALID_YEAR = "Year value not valid";
+    public static final String ERR_INVALID_MONTH = "Month value not valid";
+    public static final String ERR_INVALID_DAY = "Day value not valid";
+    public static final String ERR_INVALID_DATE = "Invalid date";
 
     private int day;
     private Months month;
     private int year;
 
     public MyDate(int day, Months month, int year) {
-        if (year < 0) throw new IllegalArgumentException(Errors.ERR_INVALID_DATE);
+        if (year < 0) throw new IllegalArgumentException(ERR_INVALID_DATE);
 
         int maxDaysInMonth = YearMonth.of(year, month.monthNumber).lengthOfMonth();
-        if (day > maxDaysInMonth) throw new IllegalArgumentException(Errors.ERR_INVALID_DATE);
+        if (day > maxDaysInMonth) throw new IllegalArgumentException(ERR_INVALID_DATE);
 
         this.day = day;
         this.month = month;
@@ -21,13 +27,12 @@ public class MyDate {
     }
 
     public MyDate() {
-
     }
 
     public void setMonth(Months month) {
-        if (this.year < 1 || this.day < 1) throw new IllegalArgumentException(Errors.ERR_INVALID_MONTH);
+        if (this.year < 1 || this.day < 1) throw new IllegalArgumentException(ERR_INVALID_MONTH);
 
-        if (this.day > getLastDayOfTheMonth(month) ) throw new IllegalArgumentException(Errors.ERR_INVALID_MONTH);
+        if (this.day > getLastDayOfTheMonth(month)) throw new IllegalArgumentException(ERR_INVALID_MONTH);
 
         this.month = month;
     }
@@ -40,29 +45,21 @@ public class MyDate {
 
     public void setYear(int year) {
 
-<<<<<<< HEAD
         if (year <= 0 || year > LocalDate.now().getYear() || !Year.isLeap(year)) {
-            throw new IllegalArgumentException(Errors.ERR_INVALID_YEAR);
-=======
-        if (year <= 0 || year > LocalDate.now().getYear() || !isLeapYear(year)) {
             throw new IllegalArgumentException(ERR_INVALID_YEAR);
->>>>>>> parent of 2328289 (Update MyDate.java)
         }
-        this.year = year;
-    }
 
-    private boolean isLeapYear(int year) {
-        return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+        this.year = year;
     }
 
     public void setDay(int day) {
 
         if (day <= 0 || day > LocalDate.now().getDayOfMonth()) {
-            throw new IllegalArgumentException(Errors.ERR_INVALID_DAY);
+            throw new IllegalArgumentException(ERR_INVALID_DAY);
         }
+
         this.day = day;
     }
-
 
     public enum Months {
         JANUARY(1),
@@ -80,11 +77,9 @@ public class MyDate {
 
         public final int monthNumber;
 
-        private Months(int monthNumber) {
-            this.monthNumber = monthNumber;
-        }
+        private Months(int monthNumber) {this.monthNumber = monthNumber;}
 
-        public static Months toMonth( int monthNumber ) {
+        public static Months toMonth(int monthNumber) {
             for (Months m : values())
                 if (m.monthNumber == monthNumber)
                     return m;

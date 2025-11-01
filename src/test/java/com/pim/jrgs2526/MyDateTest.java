@@ -49,7 +49,7 @@ public class MyDateTest {
             myDate = new MyDate(29, MyDate.Months.FEBRUARY, year);
         }
         catch (IllegalArgumentException ex) {
-            if (ex.getMessage().equals(Errors.ERR_INVALID_DATE))
+            if (ex.getMessage().equals(MyDate.ERR_INVALID_DATE))
                 return;
         }
         Assertions.fail();
@@ -65,7 +65,7 @@ public class MyDateTest {
             myDate.setMonth(month);
         }
         catch (IllegalArgumentException ex) {
-            if (ex.getMessage().equals(Errors.ERR_INVALID_MONTH))
+            if (ex.getMessage().equals(MyDate.ERR_INVALID_MONTH))
                 return;
         }
         Assertions.fail();
@@ -80,7 +80,7 @@ public class MyDateTest {
             myDate.setMonth(MyDate.Months.FEBRUARY);
         }
         catch (IllegalArgumentException ex) {
-            if (ex.getMessage().equals(Errors.ERR_INVALID_MONTH))
+            if (ex.getMessage().equals(MyDate.ERR_INVALID_MONTH))
                 return;
         }
         Assertions.fail();
@@ -96,7 +96,7 @@ public class MyDateTest {
             myDate.setDay(day);
         }
         catch (IllegalArgumentException ex) {
-            if (ex.getMessage().equals(Errors.ERR_INVALID_DAY))
+            if (ex.getMessage().equals(MyDate.ERR_INVALID_DAY))
                 return;
         }
         Assertions.fail();
@@ -112,7 +112,7 @@ public class MyDateTest {
             myDate.setYear(year);
         }
         catch (IllegalArgumentException ex) {
-            if (ex.getMessage().equals(Errors.ERR_INVALID_YEAR))
+            if (ex.getMessage().equals(MyDate.ERR_INVALID_YEAR))
                 return;
         }
         Assertions.fail();
